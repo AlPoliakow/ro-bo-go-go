@@ -1,0 +1,29 @@
+#gameboard{
+    height: 500px;
+    width: 500px;
+    background-color: gray;
+    display:flex;
+    flex-flow:row wrap;
+}
+
+.space {
+    height: 100px;
+    width: 100px;
+    background:#fb9c03;
+    box-sizing:border-box;
+}
+
+.space svg {
+    height:80px;
+    width:80px;
+    margin:10px;
+    color: black;
+}
+
+.white {
+    background-color: #FFFFFF;
+}
+
+.orange {
+    background-color: #fb9c03;
+}
