@@ -7,15 +7,17 @@ const robot = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-
 const startPositions = ["","","","","","","","","","","","", robot,"","","","","","","","","","","",""];
 
 function createBoard() {
-    startPositions.forEach((startPosition, i, spaceid) => {
+    startPositions.forEach((startPosition, i) => {
         //create a 5x5 grid
         const space = document.createElement("div");
         space.classList.add("space");
         gameBoard.append(space);
-        console.log(i);
+        //console.log(i);
         //give each space an id and index
-        space.setAttribute("spaceid",i);
-        console.log(spaceid);
+        space.setAttribute("id", (i+1));
+        //let testAttribute = space.getAttribute("id");
+        //console.log(testAttribute);
+        //console.log(space);
         // place the robot in the center to start
         space.innerHTML=startPosition;
         // make the board checkered
