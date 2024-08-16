@@ -2,10 +2,15 @@ const body = document.querySelector("body");
 
 //event listener for keydown event
 body.addEventListener("keydown", (e) => {
-    console.log("pressed");
-    //get id of space robot is currently in
-    console.log(robot.parentElement); // UNDEFINED - ERROR!!!
-    //let startPositionId = robot.parentElement.getAttribute("id");
-    //console.log(startPositionId);
+    e.preventDefault();
+    if (e.key === "ArrowUp") {
+        console.log("up");
+    } else if (e.key === "ArrowDown") {
+        console.log("down");
+    } else if (e.key === "ArrowLeft") {
+        console.log("left");
+    } else if (e.key === "ArrowRight") {
+        console.log("right");
+    }
 });
 

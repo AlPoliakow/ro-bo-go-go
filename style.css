@@ -4,6 +4,7 @@
     background-color: gray;
     display:flex;
     flex-flow:row wrap;
+    position: relative;
 }
 
 .space {
@@ -11,13 +12,19 @@
     width: 100px;
     background:#fb9c03;
     box-sizing:border-box;
+    position:relative;
 }
 
-.space svg {
+.robot {
     height:80px;
     width:80px;
     margin:10px;
     color: black;
+    position: absolute;
+    top:40%;
+    bottom:40%;
+    left:40%;
+    right:40%;
 }
 
 .white {
