@@ -20,6 +20,10 @@
     color: black;
 }
 
+.rotate-left{
+    transform: rotate(90deg);
+}
+
 .white {
     background-color: #FFFFFF;
 }
