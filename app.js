@@ -1,34 +1,79 @@
 const gameBoard = document.querySelector("#gameboard");
 const width = 5;
-const robot = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32l0 64 120 0c39.8 0 72 32.2 72 72l0 272c0 39.8-32.2 72-72 72l-304 0c-39.8 0-72-32.2-72-72l0-272c0-39.8 32.2-72 72-72l120 0 0-64c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224l16 0 0 192-16 0c-26.5 0-48-21.5-48-48l0-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-16 0 0-192 16 0z"/></svg>`;
 
 
-//define state
-const startPositions = ["","","","","","","","","","","","", robot,"","","","","","","","","","","",""];
+const container = document.querySelector(".grid");
+const gridNodes = document.querySelectorAll(".grid-item");
+const gridArray = Array.from(gridNodes);
+let circle = document.createElement("div");
+let position = {x: 0, y: 0};
 
-function createBoard() {
-    startPositions.forEach((startPosition, i) => {
-        //create a 5x5 grid
-        const space = document.createElement("div");
-        space.classList.add("space");
-        gameBoard.append(space);
-        //console.log(i);
-        //give each space an id and index
-        space.setAttribute("id", (i+1));
-        //let testAttribute = space.getAttribute("id");
-        //console.log(testAttribute);
-        //console.log(space);
-        // place the robot in the center to start
-        space.innerHTML=startPosition;
-        // make the board checkered
-        const row = Math.floor(((25-i)/5)+1);
-        if (row % 2 ===0){
-            space.classList.add(i % 2=== 0 ? "white" : "orange");
-        } else {
-           space.classList.add(i % 2=== 0 ? "white" : "orange");
-        }
-    })
+
+function makeGrid(rows, cols) {
+  
+  
+  let x = 0;
+  let y = 0;
+  for (let c = 0; c < rows * cols; c++) {
+    let cell = document.createElement("div");
+    
+    y = c%cols;
+    
+    if (y === (rows - 1)) {
+    	x++;
+    }    
+        
+    container.appendChild(cell).className = "grid-item grid-item-" + x + '' + y;
+  }
+
+  container.style.setProperty("--grid-rows", rows);
+  container.style.setProperty("--grid-cols", cols);
+}
+const keys = {
+  left: 37,
+  up: 38,
+  right: 39,
+  down: 40
 };
 
-createBoard();
+makeGrid(5, 5); // 5x5 grid
+circle.style.width = "80px";
+circle.style.height = "80px";
+circle.style.margin = "10px";
+circle.style.background = "#FFFFFF";
+circle.innerHTML = `<i class="fa-solid fa-robot"></i>`;
+let firstGridItem = document.querySelector(".grid-item");
+firstGridItem.appendChild(circle);
+
+let squares = document.querySelectorAll(".grid-item");
+console.log(squares);
+
+
+let startSquare = document.querySelector(".grid-item-22");
+console.log(startSquare);
+
+//startSquare.append(circle);
+
+function handleKey(e) {
+  switch (e.keyCode) {
+    case keys.left:
+      position.y--;
+      break;
+    case keys.up:
+      position.x--;
+      break;
+
+    case keys.right:
+      position.y++;
+      break;
+
+    case keys.down:
+      position.x++;
+      break;
+  }
+  
+  let gridItem = document.querySelector(".grid-item-" + position.x + '' + position.y);
+  gridItem.appendChild(circle);
+}
+window.addEventListener("keydown", handleKey);
 
