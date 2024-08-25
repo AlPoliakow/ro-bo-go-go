@@ -1,6 +1,12 @@
 const gameBoard = document.querySelector("#gameboard");
 const controls = document.querySelector("#controls");
 const gridBot = document.createElementNS("http://www.w3.org/2000/svg", `svg`);
+const robotInfo = getComputedStyle(gridBot);
+//console.log(robotInfo);
+//const robotTransform = robotInfo[314]; // 254 for rotate but still doesn't work
+//console.log(robotTransform); // =transform ????
+const robotTransform = robotInfo.getPropertyValue("transform");
+
 
 for (let i = 1; i < 26; i++) {
     const gridItem = document.createElement("div");
@@ -9,10 +15,13 @@ for (let i = 1; i < 26; i++) {
     gridItem.textContent = i;
     gameBoard.appendChild(gridItem);
 
+
+
+
     //square 13 appendChild image
     if (i == 13) {
         gridItem.innerHTML = "";
-        
+
         const iconPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 
         gridBot.setAttribute('fill', 'black'); //colours it in
@@ -29,66 +38,74 @@ for (let i = 1; i < 26; i++) {
 
         gridItem.appendChild(gridBot);
         console.log(gridItem);
-    } 
-    
+    }
+
 }
 
 const rotateLeft = document.createElement("button");
 rotateLeft.innerText = "Rotate left";
 controls.appendChild(rotateLeft);
 
-rotateLeft.addEventListener("click",  function(e){
-    e.preventDefault(); 
+rotateLeft.addEventListener("click", function (e) {
+    e.preventDefault();
     gridBot.setAttribute("transform", `rotate(90)`);
+    console.log(gridBot);
+    console.log(robotInfo.getPropertyValue("transform")); // matrix(0, 1, -1, 0, 0, 0)
 })
 
 const rotateRight = document.createElement("button");
 rotateRight.innerText = "Rotate right";
 controls.appendChild(rotateRight);
 
-rotateRight.addEventListener("click",  function(e){
-    e.preventDefault(); 
+rotateRight.addEventListener("click", function (e) {
+    e.preventDefault();
     gridBot.setAttribute("transform", `rotate(-90)`);
+    console.log(gridBot);
+    console.log(robotInfo.getPropertyValue("transform")); //matrix(0, -1, 1, 0, 0, 0)
 })
 
 const rotateUp = document.createElement("button");
 rotateUp.innerText = "Rotate up";
 controls.appendChild(rotateUp);
 
-rotateUp.addEventListener("click",  function(e){
-    e.preventDefault(); 
+rotateUp.addEventListener("click", function (e) {
+    e.preventDefault();
     gridBot.setAttribute("transform", `rotate(180)`);
+    console.log(gridBot);
+    console.log(robotInfo.getPropertyValue("transform"));// matrix(-1, 0, 0, -1, 0, 0)
 })
 
 const rotateDown = document.createElement("button");
 rotateDown.innerText = "Rotate down";
 controls.appendChild(rotateDown);
 
-rotateDown.addEventListener("click",  function(e){
-    e.preventDefault(); 
+rotateDown.addEventListener("click", function (e) {
+    e.preventDefault();
     gridBot.setAttribute("transform", `rotate(0)`);
+    console.log(gridBot["transform"]);
+    console.log(robotInfo.getPropertyValue("transform")); //matrix(1, 0, 0, 1, 0, 0)
 })
 
 const advance = document.createElement("button");
-const robotRotation = gridBot.style.transform;
+
 advance.innerText = "Advance";
 controls.appendChild(advance);
 
-advance.addEventListener("click",  function(e){
-    e.preventDefault(); 
-    console.log("clicked");
-    switch (gridBot.getAttribute(transform)){ //error here
-    case "rotate(0)":
-        console.log("Rotation 0");
-        break;
-    case "rotate(90)":
-        console.log("Rotation 90");
-        break;
-    case "rotate(-90)":
-        console.log("Rotation -90");
-        break;
-    case "rotate(180)":
-        console.log("Rotation 180");
-        break;
+advance.addEventListener("click", function (e) {
+    e.preventDefault();
+    //console.log("clicked");
+    switch(robotInfo.getPropertyValue("transform")) { 
+        case "matrix(1, 0, 0, 1, 0, 0)":
+            console.log("Rotation 0");
+            break;
+        case "matrix(0, 1, -1, 0, 0, 0)":
+            console.log("Rotation 90");
+            break;
+        case "matrix(0, -1, 1, 0, 0, 0)":
+            console.log("Rotation -90");
+            break;
+        case "matrix(-1, 0, 0, -1, 0, 0)":
+            console.log("Rotation 180");
+            break;
     }
 })
