@@ -108,11 +108,11 @@ advance.addEventListener("click", function (e) {
     console.log(parentLefty);
     let parentRighty = parentNumber += 2; // "+= 1" returned 13 (?)
     console.log(parentRighty);
-    let parentUppy = parentNumber -=6;
+    let parentUppy = parentNumber -= 6;
     console.log(parentUppy);
-    let parentUndery = parentNumber +=10;
+    let parentUndery = parentNumber += 10;
     console.log(parentUndery);
-
+    console.log(parent);
     switch (robotInfo.getPropertyValue("transform")) {
         case "matrix(1, 0, 0, 1, 0, 0)":
             console.log("Rotation 0");
@@ -123,12 +123,50 @@ advance.addEventListener("click", function (e) {
                 const divIndexNumber = parseInt(divIndex);
                 //console.log(divIndexNumber);
 
-                if (divIndexNumber == parentUndery) {
-                    div.appendChild(gridBot);
-                    console.log("attempted to shift down");
+
+                switch (parent) {  // processing the parent divs index
+                    //case '13':
+                    // console.log("Registered the switch"); //registered
+                    // break;
+                    //make it move
+                    case '1':
+                    case '2':
+                    case '3':
+                    case '4':
+                    case '5':
+                    case '6':
+                    case '7':
+                    case '8':
+                    case '9':
+                    case '10':
+                    case '11':
+                    case '12':
+                    case '13':
+                    case '14':
+                    case '15':
+                    case '16':
+                    case '17':
+                    case '18':
+                    case '19':
+                    case '20':
+                        console.log("Move");
+                        if (divIndexNumber == parentUndery) {
+                            div.appendChild(gridBot);
+                            console.log("attempted to shift down");
+                        }
+                        break;
+                    //make it stop at the bottom border
+                    case '21':
+                    case '22':
+                    case '23':
+                    case '24':
+                    case '25':
+                        console.log("do not advance"); //registered
+                        instructions.innerText = "Oh, buddy, you're already at *rock bottom*";
+                        break;
                 }
             })
-            break; //does not wor prior to robot turning!!!
+            break; 
         case "matrix(0, 1, -1, 0, 0, 0)":
             console.log("Rotation 90");
 
@@ -139,36 +177,53 @@ advance.addEventListener("click", function (e) {
                 const divIndexNumber = parseInt(divIndex);
                 //console.log(divIndexNumber);
 
-                if (divIndexNumber == parentLefty) {
-                    div.appendChild(gridBot);
-                    console.log("attempted to shift left");
-                }
-                //switch (parentNumber) {  // processing the parent divs index
-                    //case "13":
-                        //instructions.innerText = "There's nowhere *left* to go";
-                       // console.log("don't shift");
-                       // break;
-                    //case 2 | "3" | "4" | "5" | "7" | "8" | "9" | "10" | 12 | 13 | "14" | "15" | "17" | "18" | "19" | "20" | "22" | "23" | "24" | "25":
-                    //console.log("Something registered");
-                    // if (divIndexNumber == parentMaths) {
-                    //  div.appendChild(gridBot);
-                    // console.log("attempted to shift left");
-                    //}
+
+                switch (parent) {  // processing the parent divs index
+                    //case '13':
+                    // console.log("Registered the switch"); //registered
                     // break;
-                //}
-                // don't shift left if on left border
-                //if (divIndex == 1 | divIndex == 6 | divIndex == 11 | divIndex == 16 | divIndex == 21) {
-                //instructions.innerText = "There's nowhere *left* to go";
-                //} else if (divIndex == 2 | divIndex == 3 | divIndex == 4| divIndex == 5| divIndex == 7 | divIndex == 8 | divIndex == 9 | divIndex == 10 | divIndex == 12 | divIndex == 13 |divIndex == 14 | divIndex == 15 | divIndex == 17 | divIndex == 18 |divIndex == 19 |divIndex == 20 | divIndex == 22 | divIndex == 23| divIndex == 24 | divIndex == 25){                    //make the robot reappear in the next square 
-                // if (divIndexNumber == parentMaths) {
-                // div.appendChild(gridBot);
-                // console.log("attempted to shift left");
-                //  }
-                // }
+                    //make it move
+                    case '2':
+                    case '3':
+                    case '4':
+                    case '5':
+                    case '7':
+                    case '8':
+                    case '9':
+                    case '10':
+                    case '12':
+                    case '13':
+                    case '14':
+                    case '15':
+                    case '17':
+                    case '18':
+                    case '19':
+                    case '20':
+                    case '22':
+                    case '23':
+                    case '24':
+                    case '25':
+                        console.log("Move");
+                        if (divIndexNumber == parentLefty) {
+                            div.appendChild(gridBot);
+                            console.log("attempted to shift left");
+                        }
+                        break;
+                    //make it stop at the left border
+                    case '1':
+                    case '6':
+                    case '11':
+                    case '16':
+                    case '21':
+                        console.log("do not advance"); //registered
+                        instructions.innerText = "There's nowhere *left* to go";
+                        break;
+                }
             })
             break;
         case "matrix(0, -1, 1, 0, 0, 0)":
             console.log("Rotation -90");
+
             divs.forEach((div) => {
                 // isolate div index
                 const divIndex = div.getAttribute("index");
@@ -176,11 +231,52 @@ advance.addEventListener("click", function (e) {
                 const divIndexNumber = parseInt(divIndex);
                 //console.log(divIndexNumber);
 
-                if (divIndexNumber == parentRighty) {
-                    div.appendChild(gridBot);
-                    console.log("attempted to shift right");
+
+                switch (parent) {  // processing the parent divs index
+                    //case '13':
+                    // console.log("Registered the switch"); //registered
+                    // break;
+                    //make it move
+                    case '1':
+                    case '2':
+                    case '3':
+                    case '4':
+                    case '6':
+                    case '7':
+                    case '8':
+                    case '9':
+                    case '11':
+                    case '12':
+                    case '13':
+                    case '14':
+                    case '16':
+                    case '17':
+                    case '18':
+                    case '19':
+                    case '21':
+                    case '22':
+                    case '23':
+                    case '24':
+                        console.log("Move");
+                        if (divIndexNumber == parentRighty) {
+                            div.appendChild(gridBot);
+                            console.log("attempted to shift right");
+                        }
+                        break;
+                    //make it stop at the left border
+                    case '5':
+                    case '10':
+                    case '15':
+                    case '20':
+                    case '25':
+                        console.log("do not advance"); //registered
+                        instructions.innerText = "You're alright. You're so right, you can't be any more right";
+                        break;
                 }
             })
+
+
+           
             break;
         case "matrix(-1, 0, 0, -1, 0, 0)":
             console.log("Rotation 180");
