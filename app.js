@@ -8,11 +8,14 @@ const robotInfo = getComputedStyle(gridBot);
 const robotTransform = robotInfo.getPropertyValue("transform");
 
 
+
 for (let i = 1; i < 26; i++) {
     const gridItem = document.createElement("div");
     gridItem.classList.add("grid-item");
     gridItem.classList.add("space");
-    gridItem.textContent = i;
+    //gridItem.textContent = i;
+    //gridItem.classList.add(i); 
+    gridItem.setAttribute("index", i);
     gameBoard.appendChild(gridItem);
 
 
@@ -42,6 +45,10 @@ for (let i = 1; i < 26; i++) {
 
 }
 
+// get all divs
+const divs = document.querySelectorAll(".space");
+
+
 const rotateLeft = document.createElement("button");
 rotateLeft.innerText = "Rotate left";
 controls.appendChild(rotateLeft);
@@ -49,8 +56,8 @@ controls.appendChild(rotateLeft);
 rotateLeft.addEventListener("click", function (e) {
     e.preventDefault();
     gridBot.setAttribute("transform", `rotate(90)`);
-    console.log(gridBot);
-    console.log(robotInfo.getPropertyValue("transform")); // matrix(0, 1, -1, 0, 0, 0)
+    //console.log(gridBot);
+    // console.log(robotInfo.getPropertyValue("transform")); // matrix(0, 1, -1, 0, 0, 0)
 })
 
 const rotateRight = document.createElement("button");
@@ -60,8 +67,8 @@ controls.appendChild(rotateRight);
 rotateRight.addEventListener("click", function (e) {
     e.preventDefault();
     gridBot.setAttribute("transform", `rotate(-90)`);
-    console.log(gridBot);
-    console.log(robotInfo.getPropertyValue("transform")); //matrix(0, -1, 1, 0, 0, 0)
+    //console.log(gridBot);
+    // console.log(robotInfo.getPropertyValue("transform")); //matrix(0, -1, 1, 0, 0, 0)
 })
 
 const rotateUp = document.createElement("button");
@@ -71,8 +78,8 @@ controls.appendChild(rotateUp);
 rotateUp.addEventListener("click", function (e) {
     e.preventDefault();
     gridBot.setAttribute("transform", `rotate(180)`);
-    console.log(gridBot);
-    console.log(robotInfo.getPropertyValue("transform"));// matrix(-1, 0, 0, -1, 0, 0)
+    //console.log(gridBot);
+    //console.log(robotInfo.getPropertyValue("transform"));// matrix(-1, 0, 0, -1, 0, 0)
 })
 
 const rotateDown = document.createElement("button");
@@ -82,8 +89,8 @@ controls.appendChild(rotateDown);
 rotateDown.addEventListener("click", function (e) {
     e.preventDefault();
     gridBot.setAttribute("transform", `rotate(0)`);
-    console.log(gridBot["transform"]);
-    console.log(robotInfo.getPropertyValue("transform")); //matrix(1, 0, 0, 1, 0, 0)
+    //console.log(gridBot["transform"]);
+    //console.log(robotInfo.getPropertyValue("transform")); //matrix(1, 0, 0, 1, 0, 0)
 })
 
 const advance = document.createElement("button");
@@ -94,18 +101,47 @@ controls.appendChild(advance);
 advance.addEventListener("click", function (e) {
     e.preventDefault();
     //console.log("clicked");
-    switch(robotInfo.getPropertyValue("transform")) { 
+    switch (robotInfo.getPropertyValue("transform")) {
         case "matrix(1, 0, 0, 1, 0, 0)":
             console.log("Rotation 0");
             break;
         case "matrix(0, 1, -1, 0, 0, 0)":
             console.log("Rotation 90");
+            let parent = gridBot.parentElement.getAttribute("index");
+            console.log(parent); // 13
+            let parentNumber = parseInt(parent);
+            console.log(parentNumber);
+            let parentMaths = parentNumber -= 1;
+            console.log(parentMaths);
+
+
+            divs.forEach((div) => {
+                console.log("for each");
+
+                // isolate div index
+                const divIndex = div.getAttribute("index");
+                console.log(divIndex);
+
+                //make the robot reappear in the next square 
+                if (divIndex == parentMaths) {
+                    div.appendChild(gridBot);
+                    console.log("attempted to shift left");
+                }
+
+                //let a = parseInt(gridBot.parentElement);
+                //console.log(a);
+                // if (div.i == (a -= 1)) {
+                //console.log("div-id working");
+                // div.appendChild(gridBot);
+                //}
+            })
             break;
         case "matrix(0, -1, 1, 0, 0, 0)":
             console.log("Rotation -90");
             break;
         case "matrix(-1, 0, 0, -1, 0, 0)":
             console.log("Rotation 180");
+            position++
             break;
     }
 })
