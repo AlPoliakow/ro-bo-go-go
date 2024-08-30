@@ -1,15 +1,52 @@
+body {
+    display: flex;
+    justify-content: center;
+    background: #FFFFFF;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    max-width: 750px;
+}
+
+h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-size: 3.5em;
+    font-style: normal;
+    color:#e15a1d;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom:10px;
+}
+
+.instructions {
+    width:500px;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    font-style: normal;
+    margin-bottom: 40px;
+}
+
 #gameboard {
     height: 500px;
     width: 500px;
     background-color: gray;
     display: flex;
     flex-flow: row wrap;
+    border: 2px solid #e15a1d;
+    margin-bottom: 20px;
 }
 
 .space {
     height: 100px;
     width: 100px;
-    background: #fb9c03;
+    background: #FFFFFF;
     box-sizing: border-box;
 }
 
@@ -17,7 +54,51 @@
     height: 80px;
     width: 80px;
     margin: 10px;
-    color: black;
+    color: #e15a1d;
+}
+
+#controls {
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 40px 0;
+    border: 1px solid black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1), 0 12px 20px rgba(17, 24, 39, .2);
+}
+
+#turns {
+    /*border: black 1px dotted;*/
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    width: 60%;
+    height: 110px;
+}
+
+button {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 0.9em;
+    font-style: normal;
+    background:#FFFFFF;
+    border-radius: 1em;
+}
+
+button:hover{
+    outline: 2px solid #e15a1d;
+}
+
+#turns button{
+    margin: 0 5px;
+    width: 120px;
+}
+
+.by {
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    font-style: normal;
 }
 
 :root {
@@ -34,17 +115,9 @@
 .grid-item {
     height: 100px;
     width: 100px;
-    background: #fb9c03;
+    background: #FFFFFF;
     box-sizing: border-box;
     /*padding: 1em;*/
-    border: 1px solid #FFFFFF;
+    border: 1px solid #e15a1d;
     text-align: center;
-}
-
-.white {
-    background-color: #FFFFFF;
-}
-
-.orange {
-    background-color: #fb9c03;
 }
