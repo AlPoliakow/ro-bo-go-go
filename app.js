@@ -1,19 +1,53 @@
-const gameBoard = document.querySelector("#gameboard");
-const controls = document.querySelector("#controls");
-const turns = document.querySelector("#turns");
+const app = document.querySelector(".app");
+
+// create the a heading
+const header = document.createElement("h1");
+header.innerText="Ro-bo-go-go";
+app.appendChild(header);
+
+// create a space for instructions
+const instructions = document.createElement("p");
+instructions.innerText="Click the buttons to turn and move the robot";
+instructions.classList.add("instructions");
+app.appendChild(instructions);
+
+// create control buttons section
+const controls = document.createElement("div");
+controls.classList.add("controls");
+app.appendChild(controls);
+const turns = document.createElement("div");
+turns.classList.add("turns");
+controls.appendChild(turns);
+
+// create div for gameboard
+const gameBoard = document.createElement("div");
+gameBoard.classList.add("gameboard");
+app.appendChild(gameBoard);
+//document.querySelector("#gameboard");
+//const controls = document.querySelector("#controls");
+//const turns = document.querySelector("#turns");
+
+//create written by section
+const by = document.createElement("p");
+by.innerText="By Al Poliakow 2024";
+by.classList.add("by");
+app.appendChild(by);
+by.style.width="300px";
+
 const gridBot = document.createElementNS("http://www.w3.org/2000/svg", `svg`);
 const robotInfo = getComputedStyle(gridBot);
-const instructions = document.querySelector(".instructions");
-const by = document.querySelector(".by");
+//const instructions = document.querySelector(".instructions");
+//const by = document.querySelector(".by");
+
 //console.log(robotInfo);
 //const robotTransform = robotInfo[314]; // 254 for rotate but still doesn't work
 //console.log(robotTransform); // =transform ????
 const robotTransform = robotInfo.getPropertyValue("transform");
 
-instructions.innerText="Click the buttons to turn and move the robot";
-by.innerHTML=`<p>By Al Poliakow 2024</p>`;
-by.style.width="300px";
+//instructions.innerText="Click the buttons to turn and move the robot";
+//by.innerHTML=`<p>By Al Poliakow 2024</p>`;
 
+// create a 5x5 gameboard
 for (let i = 1; i < 26; i++) {
     const gridItem = document.createElement("div");
     gridItem.classList.add("grid-item");

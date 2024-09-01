@@ -4,7 +4,7 @@ body {
     background: #FFFFFF;
 }
 
-.center {
+.app {
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
@@ -33,7 +33,7 @@ h1 {
     margin-bottom: 40px;
 }
 
-#gameboard {
+.gameboard {
     height: 500px;
     width: 500px;
     background-color: gray;
@@ -57,7 +57,7 @@ h1 {
     color: #e15a1d;
 }
 
-#controls {
+.controls {
     width: 450px;
     display: flex;
     justify-content: center;
@@ -66,7 +66,7 @@ h1 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, .1), 0 12px 20px rgba(17, 24, 39, .2);
 }
 
-#turns {
+.turns {
     /*border: black 1px dotted;*/
     display: flex;
     justify-content: center;
@@ -88,7 +88,7 @@ button:hover{
     outline: 2px solid #e15a1d;
 }
 
-#turns button{
+.turns button{
     margin: 0 5px;
     width: 120px;
 }
