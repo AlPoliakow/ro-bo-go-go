@@ -2,13 +2,24 @@ body {
     display: flex;
     justify-content: center;
     background: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding:0;
 }
 
 .app {
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
-    max-width: 550px;
+    max-width: 800px;
+    height: 100vh;
+    margin:0;
+    padding:0;
+     /* vertical scrollbar only visible when necessary */
+     overflow-x: hidden;
+     overflow-y:auto; 
+     color:#333333;
 }
 
 h1 {
@@ -16,15 +27,14 @@ h1 {
     font-weight: 900;
     font-size: 3.5em;
     font-style: normal;
-    color:#e15a1d;
+    /*color:#e15a1d;*/
     width: 100%;
     text-align: center;
     text-transform: uppercase;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 
 .instructions {
-    /*width:500px;*/
     text-align: center;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
@@ -35,40 +45,39 @@ h1 {
     border:black 2px dotted;
 }
 
-
 .gameboard {
-    height: 500px;
-    width: 500px;
-    background-color: gray;
+    width: 80%;
     display: flex;
     flex-flow: row wrap;
     border: 2px solid #e15a1d;
-    margin-bottom: 20px;
 }
 
-.space {
-    height: 100px;
-    width: 100px;
-    background: #FFFFFF;
-    box-sizing: border-box;
+.grid-item::before {
+    /* to make height = width without affecting div content */
+    content: "";
+    display: block;
+    margin-top: 100%;
 }
 
 .grid-item {
-    height: 100px;
-    width: 100px;
+    width: 20%;
+    height: 20%;
     background: #FFFFFF;
+    position: relative;
+    display: flex;
+    justify-content: center;
     box-sizing: border-box;
     border: 1px solid #e15a1d;
 }
 
 .robot {
-    height: 80px;
-    width: 80px;
-    margin: 10px;
+    height: 80%;
+    width: 80%;
+    margin: 10%;
 }
 
 .controls {
-    width: 450px;
+    width: 90%;
     display: flex;
     justify-content: center;
     margin: 0 0 40px 0;
@@ -100,13 +109,13 @@ button:hover{
 
 .turns button{
     margin: 0 5px;
-    width: 120px;
+    width: 100px;
 }
 
 .by {
     text-align: center;
     font-family: "Roboto", sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 1em;
     font-style: normal;
 }
