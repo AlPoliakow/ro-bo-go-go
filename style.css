@@ -5,27 +5,31 @@ body {
     width: 100%;
     height: 100%;
     margin: 0;
-    padding:0;
+    padding: 0;
+    background: #ECEAE4;
 }
 
 .app {
-    display: flex;
-    justify-content: center;
-    flex-flow: row wrap;
-    max-width: 800px;
+    width: 100vw;
     height: 100vh;
-    margin:0;
-    padding:0;
-     /* vertical scrollbar only visible when necessary */
-     overflow-x: hidden;
-     overflow-y:auto; 
-     color:#333333;
+    margin: 0;
+    padding: 0;
+    /* vertical scrollbar only visible when necessary */
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: #333333;
+}
+
+header {
+    margin: 0;
+    background: #FFFFFF; 
+    width:100%;
 }
 
 h1 {
     font-family: "Roboto", sans-serif;
     font-weight: 900;
-    font-size: 3.5em;
+    font-size: 2.5em;
     font-style: normal;
     /*color:#e15a1d;*/
     width: 100%;
@@ -38,18 +42,75 @@ h1 {
     text-align: center;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
-    padding: 1em;
+    padding: 1.5em;
     font-size: 1em;
     font-style: normal;
-    margin-bottom: 40px;
-    border:black 2px dotted;
+    margin-bottom: 10px;
+    width: 100%;
+    background: #ECEAE4; 
+}
+
+.controls {
+    width: 100%;
+    background: #82999E;
+    display: flex;
+    justify-content: center;
+    height: 70px;
+}
+
+.turns {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.advanceDiv {
+    background:#A6B8BA;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.move {
+    background:#F7F7F7;
+    margin: 10px;
+}
+
+button {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 0.9em;
+    font-style: normal;
+    background: #EFEFEF;
+    border: 2px solid #FFFFFF;
+}
+
+button:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.turns button {
+    margin: 10px 0;
+    width: 87px;
+    text-align: left;
+}
+
+.game {
+    background: #EFEAE5;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .gameboard {
     width: 80%;
+    max-width: 50vh;
     display: flex;
     flex-flow: row wrap;
-    border: 2px solid #e15a1d;
+    border: 2px solid #E15A1D;
+    margin: 20px 0;
 }
 
 .grid-item::before {
@@ -62,12 +123,12 @@ h1 {
 .grid-item {
     width: 20%;
     height: 20%;
-    background: #FFFFFF;
+    background: #EFEAE5;
     position: relative;
     display: flex;
     justify-content: center;
     box-sizing: border-box;
-    border: 1px solid #e15a1d;
+    border: 1px solid  #E15A1D;
 }
 
 .robot {
@@ -76,48 +137,30 @@ h1 {
     margin: 10%;
 }
 
-.controls {
-    width: 90%;
+
+footer {
+    background: #222222;
+    width: 100%;
     display: flex;
     justify-content: center;
-    margin: 0 0 40px 0;
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 0.5em;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .1), 0 12px 20px rgba(17, 24, 39, .2);
-}
-
-.turns {
-    display: flex;
-    justify-content: center;
-    flex-flow: row wrap;
-    width: 60%;
-    height: 110px;
-}
-
-button {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 0.9em;
-    font-style: normal;
-    background:#FFFFFF;
-    border-radius: 1em;
-}
-
-button:hover{
-    outline: 2px solid #e15a1d;
-}
-
-.turns button{
-    margin: 0 5px;
-    width: 100px;
 }
 
 .by {
     text-align: center;
+    color: #999999;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
     font-size: 1em;
     font-style: normal;
+    width: 100%;
 }
 
+@media screen and (min-width: 768px) {
 
+    /*---TABLET HEADER STYLES---*/
+    .turns {
+        max-width: 800px;
+    }
+
+   
+}

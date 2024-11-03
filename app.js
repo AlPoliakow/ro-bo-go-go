@@ -1,8 +1,10 @@
 const app = document.querySelector(".app");
 
 // create the heading
-const header = document.createElement("h1");
-header.innerText="Ro-bo-go-go";
+const header = document.createElement("header");
+const heading = document.createElement("h1");
+header.appendChild(heading);
+heading.innerText="Ro-bo-go-go";
 app.appendChild(header);
 
 // create a space for instructions
@@ -11,24 +13,39 @@ instructions.innerText="Click the buttons to turn and move the robot";
 instructions.classList.add("instructions");
 app.appendChild(instructions);
 
-// create control buttons section
+//create an area for the buttons
 const controls = document.createElement("div");
 controls.classList.add("controls");
 app.appendChild(controls);
+
+// create a turn buttons section
 const turns = document.createElement("div");
 turns.classList.add("turns");
 controls.appendChild(turns);
 
+// create move button section
+const advanceDiv = document.createElement("div");
+advanceDiv.classList.add("advanceDiv");
+app.appendChild(advanceDiv);
+
+// create a game area
+const game = document.createElement("div");
+game.classList.add("game");
+app.appendChild(game);
+
 // create div for gameboard
 const gameBoard = document.createElement("div");
 gameBoard.classList.add("gameboard");
-app.appendChild(gameBoard);
+game.appendChild(gameBoard);
 
 //create written by section
+const footer = document.createElement("footer");
+app.appendChild(footer);
 const by = document.createElement("p");
+footer.appendChild(by);
 by.innerText="By Al Poliakow 2024";
 by.classList.add("by");
-app.appendChild(by);
+
 by.style.width="300px";
 
 const gridBot = document.createElementNS("http://www.w3.org/2000/svg", `svg`);
@@ -51,13 +68,13 @@ for (let i = 1; i < 26; i++) {
     if (i == 13) {
         const iconPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 
-        gridBot.setAttribute('fill', '#5c5c5c'); //colours it in
+        gridBot.setAttribute('fill', '#222222'); //colors it in
         gridBot.setAttribute('viewBox', '0 0 640 512'); //from svg link
-        gridBot.setAttribute('stroke', 'black'); // color
+        gridBot.setAttribute('stroke', '#222222'); // color
         gridBot.setAttribute("transform", `rotate(0)`); // to make advancing work before button pressing
 
         iconPath.setAttribute("d", "M320 0c17.7 0 32 14.3 32 32l0 64 120 0c39.8 0 72 32.2 72 72l0 272c0 39.8-32.2 72-72 72l-304 0c-39.8 0-72-32.2-72-72l0-272c0-39.8 32.2-72 72-72l120 0 0-64c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224l16 0 0 192-16 0c-26.5 0-48-21.5-48-48l0-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-16 0 0-192 16 0z");
-        iconPath.setAttribute('stroke-width', '15'); //thickness of lines
+        iconPath.setAttribute('stroke-width', '6'); //thickness of lines
         gridBot.appendChild(iconPath);
         gridBot.classList.add("robot");
 
@@ -73,7 +90,6 @@ const divs = document.querySelectorAll(".space");
 // create a button to rotate the robot upwards
 const rotateUp = document.createElement("button");
 rotateUp.innerText = "Face up";
-rotateUp.style.margin="10px 40px";
 turns.appendChild(rotateUp);
 
 //make the button functional
@@ -87,7 +103,6 @@ rotateUp.addEventListener("click", function (e) {
 // create a button to rotate the robot left
 const rotateLeft = document.createElement("button");
 rotateLeft.innerText = "Face left";
-rotateLeft.style.margin="0 5px";
 turns.appendChild(rotateLeft);
 
 // make the button functional
@@ -100,7 +115,6 @@ rotateLeft.addEventListener("click", function (e) {
 // create a button to rotate the robot right
 const rotateRight = document.createElement("button");
 rotateRight.innerText = "Face right";
-rotateRight.style.margin="0 5px";
 turns.appendChild(rotateRight);
 
 rotateRight.addEventListener("click", function (e) {
@@ -113,7 +127,6 @@ rotateRight.addEventListener("click", function (e) {
 // create a button to rotate the robot downwards
 const rotateDown = document.createElement("button");
 rotateDown.innerText = "Face down";
-rotateDown.style.margin="10px 40px";
 turns.appendChild(rotateDown);
 
 // make the button functional
@@ -123,11 +136,14 @@ rotateDown.addEventListener("click", function (e) {
     //console.log(robotInfo.getPropertyValue("transform")); //matrix(1, 0, 0, 1, 0, 0)
 })
 
+
+// create a button to move the robot forwards
 const advance = document.createElement("button");
-advance.style.margin="25px 30px";
 advance.style.width="60px";
+advance.style.height="50px";
 advance.innerText = "Move";
-controls.appendChild(advance);
+advance.classList.add("move");
+advanceDiv.appendChild(advance);
 
 advance.addEventListener("click", function (e) {
     e.preventDefault();
